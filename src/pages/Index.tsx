@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
+import logo from "@/assets/logo.png";
 
 const WHATSAPP_NUMBER = "5561996165083";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.`;
 const EMAIL = "elissonvictorc@gmail.com";
-const STORE_URL = "#"; // Replace with actual store URL
+const STORE_URL = "#";
 
 const actionButtons = [
   { label: "WHATSAPP", href: WHATSAPP_URL },
@@ -22,11 +23,33 @@ const Index = () => {
           </span>
         </div>
 
-        <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.95] tracking-[2px] text-foreground">
-          ELISSON
-          <br />
-          SIQUEIRA
-        </h1>
+        <div className="flex items-center gap-6">
+          <motion.img
+            src={logo}
+            alt="Concerta+ Logo"
+            className="w-24 h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 object-contain cursor-pointer"
+            whileHover={{
+              filter: [
+                "hue-rotate(0deg)",
+                "hue-rotate(90deg)",
+                "hue-rotate(180deg)",
+                "hue-rotate(270deg)",
+                "hue-rotate(360deg)",
+              ],
+              scale: 1.08,
+            }}
+            transition={{
+              filter: { duration: 1.5, repeat: Infinity, ease: "linear" },
+              scale: { duration: 0.3 },
+            }}
+          />
+
+          <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.95] tracking-[2px] text-foreground">
+            ELISSON
+            <br />
+            SIQUEIRA
+          </h1>
+        </div>
 
         <div className="mt-6 w-16 h-[2px] bg-primary" />
 
