@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-
+import InteractiveCube from "@/components/InteractiveCube";
 
 const WHATSAPP_NUMBER = "5561996165083";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.`;
