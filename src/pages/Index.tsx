@@ -1,23 +1,19 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import InteractiveCube from "@/components/InteractiveCube";
+import WhatsAppForm from "@/components/WhatsAppForm";
 
-const WHATSAPP_NUMBER = "5561996165083";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.`;
 const EMAIL = "elissonvictorc@gmail.com";
 const STORE_URL = "#";
 
-const actionButtons = [
-  { label: "WHATSAPP", href: WHATSAPP_URL },
-  { label: "E-MAIL", href: `mailto:${EMAIL}` },
-  { label: "LOJA ONLINE", href: STORE_URL },
-];
-
 const Index = () => {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
       {/* Left Column - Identity Anchor */}
-      <div className="lg:w-[40%] lg:fixed lg:h-screen flex flex-col justify-center px-8 md:px-16 py-16 lg:py-0 border-r border-border">
-        <div className="mb-8">
+      <div className="lg:w-[40%] lg:fixed lg:h-screen flex flex-col justify-center px-8 md:px-16 py-16 lg:py-0 border-r border-border overflow-y-auto">
+        <div className="mb-6">
           <span className="font-body text-xs tracking-[4px] text-secondary uppercase font-semibold">
             Concerta+
           </span>
@@ -29,43 +25,76 @@ const Index = () => {
           SIQUEIRA
         </h1>
 
-        <div className="mt-6 w-16 h-[2px] bg-primary" />
+        <div className="mt-5 w-16 h-[2px] bg-primary" />
 
-        <p className="font-body text-sm tracking-[6px] text-primary mt-6 uppercase font-medium">
+        <p className="font-body text-sm tracking-[6px] text-primary mt-5 uppercase font-medium">
           Técnico
         </p>
 
-        <p className="font-body text-xs text-muted-foreground mt-10 tracking-wide leading-relaxed max-w-[280px]">
+        <p className="font-body text-xs text-muted-foreground mt-6 tracking-wide leading-relaxed max-w-[280px]">
           Atuação exclusiva em Brasília — DF.
           <br />
           Assistência técnica especializada com compromisso, pontualidade e transparência.
+        </p>
+
+        {/* Stats */}
+        <div className="mt-8 flex gap-8">
+          <div>
+            <p className="font-heading text-3xl font-bold text-foreground">5+</p>
+            <p className="font-body text-[10px] tracking-[2px] text-muted-foreground uppercase">Anos de experiência</p>
+          </div>
+          <div>
+            <p className="font-heading text-3xl font-bold text-foreground">1000+</p>
+            <p className="font-body text-[10px] tracking-[2px] text-muted-foreground uppercase">Reparos realizados</p>
+          </div>
+        </div>
+
+        {/* Specialties */}
+        <div className="mt-8 flex flex-wrap gap-2">
+          {["Celulares", "Notebooks", "Tablets", "Eletrônicos"].map((tag) => (
+            <span
+              key={tag}
+              className="font-body text-[10px] tracking-[2px] text-primary uppercase border border-border px-3 py-1.5"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <p className="font-body text-[10px] text-muted-foreground mt-8 opacity-50">
+          (61) 99616-5083 · elissonvictorc@gmail.com
         </p>
       </div>
 
       {/* Right Column - Action & Content */}
       <div className="lg:w-[60%] lg:ml-[40%] flex flex-col">
-        {/* Hero with Logo */}
+        {/* Hero Section */}
         <div className="relative flex-1 flex flex-col justify-center px-8 md:px-16 lg:px-24 py-16 lg:py-0 min-h-[60vh] overflow-hidden">
-          {/* Interactive 3D Cube */}
           <div className="absolute right-0 top-0 bottom-0 w-[50%] opacity-40">
             <InteractiveCube />
           </div>
+
           <div className="relative z-10">
             <p className="font-body text-xs text-muted-foreground tracking-[3px] uppercase mb-12">
               Entre em contato
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-              {actionButtons.map((btn, i) => (
+              {[
+                { label: "WHATSAPP", onClick: () => setShowForm(true) },
+                { label: "E-MAIL", href: `mailto:${EMAIL}` },
+                { label: "LOJA ONLINE", href: STORE_URL },
+              ].map((btn, i) => (
                 <motion.a
                   key={btn.label}
-                  href={btn.href}
-                  target={btn.label === "WHATSAPP" || btn.label === "LOJA ONLINE" ? "_blank" : undefined}
+                  href={"href" in btn ? btn.href : undefined}
+                  onClick={"onClick" in btn ? (e: React.MouseEvent) => { e.preventDefault(); btn.onClick?.(); } : undefined}
+                  target={btn.label === "LOJA ONLINE" ? "_blank" : undefined}
                   rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + i * 0.15, duration: 0.5, ease: "easeOut" }}
-                  className="group border border-primary px-8 py-5 text-center font-body text-sm tracking-[3px] text-primary font-semibold uppercase transition-colors duration-200 hover:bg-primary hover:text-primary-foreground"
+                  className="cursor-pointer border border-primary px-8 py-5 text-center font-body text-sm tracking-[3px] text-primary font-semibold uppercase transition-colors duration-200 hover:bg-primary hover:text-primary-foreground"
                 >
                   {btn.label}
                 </motion.a>
@@ -74,7 +103,12 @@ const Index = () => {
           </div>
         </div>
 
-        {/* About Section */}
+        {/* WhatsApp Form */}
+        {showForm && (
+          <WhatsAppForm onClose={() => setShowForm(false)} />
+        )}
+
+        {/* Services Section */}
         <div className="px-8 md:px-16 lg:px-24 py-20 border-t border-border">
           <h2 className="font-heading text-3xl font-bold text-foreground mb-2">
             Serviços
