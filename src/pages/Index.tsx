@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import logo from "@/assets/logo-transparent.png";
+
 
 const WHATSAPP_NUMBER = "5561996165083";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.`;
@@ -46,28 +46,6 @@ const Index = () => {
       <div className="lg:w-[60%] lg:ml-[40%] flex flex-col">
         {/* Hero with Logo */}
         <div className="relative flex-1 flex flex-col justify-center px-8 md:px-16 lg:px-24 py-16 lg:py-0 min-h-[60vh] overflow-hidden">
-          {/* Big logo on the right */}
-          <motion.img
-            src={logo}
-            alt="Concerta+ Logo"
-            className="absolute right-[-5%] top-1/2 -translate-y-1/2 w-[320px] h-[320px] md:w-[420px] md:h-[420px] lg:w-[500px] lg:h-[500px] object-contain opacity-20 cursor-pointer select-none pointer-events-auto"
-            whileHover={{
-              filter: [
-                "hue-rotate(0deg)",
-                "hue-rotate(90deg)",
-                "hue-rotate(180deg)",
-                "hue-rotate(270deg)",
-                "hue-rotate(360deg)",
-              ],
-              opacity: 0.5,
-              scale: 1.05,
-            }}
-            transition={{
-              filter: { duration: 1.5, repeat: Infinity, ease: "linear" },
-              opacity: { duration: 0.3 },
-              scale: { duration: 0.3 },
-            }}
-          />
 
           <div className="relative z-10">
             <p className="font-body text-xs text-muted-foreground tracking-[3px] uppercase mb-12">
