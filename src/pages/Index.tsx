@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-transparent.png";
 
 const WHATSAPP_NUMBER = "5561996165083";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.`;
@@ -23,33 +23,11 @@ const Index = () => {
           </span>
         </div>
 
-        <div className="flex items-center gap-6">
-          <motion.img
-            src={logo}
-            alt="Concerta+ Logo"
-            className="w-24 h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 object-contain cursor-pointer"
-            whileHover={{
-              filter: [
-                "hue-rotate(0deg)",
-                "hue-rotate(90deg)",
-                "hue-rotate(180deg)",
-                "hue-rotate(270deg)",
-                "hue-rotate(360deg)",
-              ],
-              scale: 1.08,
-            }}
-            transition={{
-              filter: { duration: 1.5, repeat: Infinity, ease: "linear" },
-              scale: { duration: 0.3 },
-            }}
-          />
-
-          <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.95] tracking-[2px] text-foreground">
-            ELISSON
-            <br />
-            SIQUEIRA
-          </h1>
-        </div>
+        <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.95] tracking-[2px] text-foreground">
+          ELISSON
+          <br />
+          SIQUEIRA
+        </h1>
 
         <div className="mt-6 w-16 h-[2px] bg-primary" />
 
@@ -66,27 +44,52 @@ const Index = () => {
 
       {/* Right Column - Action & Content */}
       <div className="lg:w-[60%] lg:ml-[40%] flex flex-col">
-        {/* Action Section */}
-        <div className="flex-1 flex flex-col justify-center px-8 md:px-16 lg:px-24 py-16 lg:py-0 min-h-[60vh]">
-          <p className="font-body text-xs text-muted-foreground tracking-[3px] uppercase mb-12">
-            Entre em contato
-          </p>
+        {/* Hero with Logo */}
+        <div className="relative flex-1 flex flex-col justify-center px-8 md:px-16 lg:px-24 py-16 lg:py-0 min-h-[60vh] overflow-hidden">
+          {/* Big logo on the right */}
+          <motion.img
+            src={logo}
+            alt="Concerta+ Logo"
+            className="absolute right-[-5%] top-1/2 -translate-y-1/2 w-[320px] h-[320px] md:w-[420px] md:h-[420px] lg:w-[500px] lg:h-[500px] object-contain opacity-20 cursor-pointer select-none pointer-events-auto"
+            whileHover={{
+              filter: [
+                "hue-rotate(0deg)",
+                "hue-rotate(90deg)",
+                "hue-rotate(180deg)",
+                "hue-rotate(270deg)",
+                "hue-rotate(360deg)",
+              ],
+              opacity: 0.5,
+              scale: 1.05,
+            }}
+            transition={{
+              filter: { duration: 1.5, repeat: Infinity, ease: "linear" },
+              opacity: { duration: 0.3 },
+              scale: { duration: 0.3 },
+            }}
+          />
 
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-            {actionButtons.map((btn, i) => (
-              <motion.a
-                key={btn.label}
-                href={btn.href}
-                target={btn.label === "WHATSAPP" || btn.label === "LOJA ONLINE" ? "_blank" : undefined}
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + i * 0.15, duration: 0.5, ease: "easeOut" }}
-                className="group border border-primary px-8 py-5 text-center font-body text-sm tracking-[3px] text-primary font-semibold uppercase transition-colors duration-200 hover:bg-primary hover:text-primary-foreground"
-              >
-                {btn.label}
-              </motion.a>
-            ))}
+          <div className="relative z-10">
+            <p className="font-body text-xs text-muted-foreground tracking-[3px] uppercase mb-12">
+              Entre em contato
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+              {actionButtons.map((btn, i) => (
+                <motion.a
+                  key={btn.label}
+                  href={btn.href}
+                  target={btn.label === "WHATSAPP" || btn.label === "LOJA ONLINE" ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 + i * 0.15, duration: 0.5, ease: "easeOut" }}
+                  className="group border border-primary px-8 py-5 text-center font-body text-sm tracking-[3px] text-primary font-semibold uppercase transition-colors duration-200 hover:bg-primary hover:text-primary-foreground"
+                >
+                  {btn.label}
+                </motion.a>
+              ))}
+            </div>
           </div>
         </div>
 
