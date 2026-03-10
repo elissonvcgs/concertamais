@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-
+import InteractiveCube from "@/components/InteractiveCube";
 
 const WHATSAPP_NUMBER = "5561996165083";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.`;
@@ -46,7 +46,10 @@ const Index = () => {
       <div className="lg:w-[60%] lg:ml-[40%] flex flex-col">
         {/* Hero with Logo */}
         <div className="relative flex-1 flex flex-col justify-center px-8 md:px-16 lg:px-24 py-16 lg:py-0 min-h-[60vh] overflow-hidden">
-
+          {/* Interactive 3D Cube */}
+          <div className="absolute right-0 top-0 bottom-0 w-[50%] opacity-40">
+            <InteractiveCube />
+          </div>
           <div className="relative z-10">
             <p className="font-body text-xs text-muted-foreground tracking-[3px] uppercase mb-12">
               Entre em contato
