@@ -90,7 +90,7 @@ const Index = () => {
                   key={btn.label}
                   href={"href" in btn ? btn.href : undefined}
                   onClick={"onClick" in btn ? (e: React.MouseEvent) => { e.preventDefault(); btn.onClick?.(); } : undefined}
-                  target={btn.label === "LOJA ONLINE" ? "_blank" : undefined}
+                  target={btn.label === "E-MAIL" ? "_blank" : undefined}
                   rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
