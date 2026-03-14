@@ -8,6 +8,7 @@ const EMAIL = "elissonvictorc@gmail.com";
 
 const Index = () => {
   const [showForm, setShowForm] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
