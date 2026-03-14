@@ -1,1 +1,4 @@
 project_id = "rabmeertncqhafbpmapj"
+
+[functions.search-parts]
+verify_jwt = false

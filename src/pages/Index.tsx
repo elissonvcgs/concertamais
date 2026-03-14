@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import InteractiveCube from "@/components/InteractiveCube";
 import WhatsAppForm from "@/components/WhatsAppForm";
 
 const EMAIL = "elissonvictorc@gmail.com";
-const STORE_URL = "#";
 
 const Index = () => {
   const [showForm, setShowForm] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
@@ -83,13 +84,13 @@ const Index = () => {
               {[
                 { label: "WHATSAPP", onClick: () => setShowForm(true) },
                 { label: "E-MAIL", href: `mailto:${EMAIL}` },
-                { label: "LOJA ONLINE", href: STORE_URL },
+                { label: "LOJA ONLINE", onClick: () => navigate("/loja") },
               ].map((btn, i) => (
                 <motion.a
                   key={btn.label}
                   href={"href" in btn ? btn.href : undefined}
                   onClick={"onClick" in btn ? (e: React.MouseEvent) => { e.preventDefault(); btn.onClick?.(); } : undefined}
-                  target={btn.label === "LOJA ONLINE" ? "_blank" : undefined}
+                  target={btn.label === "E-MAIL" ? "_blank" : undefined}
                   rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
