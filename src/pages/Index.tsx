@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import InteractiveCube from "@/components/InteractiveCube";
 import WhatsAppForm from "@/components/WhatsAppForm";
 
 const EMAIL = "elissonvictorc@gmail.com";
-const STORE_URL = "#";
 
 const Index = () => {
   const [showForm, setShowForm] = useState(false);
