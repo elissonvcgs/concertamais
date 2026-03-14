@@ -84,7 +84,7 @@ const Index = () => {
               {[
                 { label: "WHATSAPP", onClick: () => setShowForm(true) },
                 { label: "E-MAIL", href: `mailto:${EMAIL}` },
-                { label: "LOJA ONLINE", href: STORE_URL },
+                { label: "LOJA ONLINE", onClick: () => navigate("/loja") },
               ].map((btn, i) => (
                 <motion.a
                   key={btn.label}
